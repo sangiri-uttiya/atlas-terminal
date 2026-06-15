@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atlas-terminal"
+version = "1.0.0"
+description = "Professional Desktop Application for Indian Equity Swing Traders"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Atlas Terminal Team"}
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = [
+    "PyQt6>=6.6",
+    "pyqtgraph>=0.13",
+    "pandas>=2.2",
+    "numpy>=1.26,<2",
+    "jugaad-data>=0.26",
+    "yfinance>=0.2",
+    "requests>=2.31",
+    "tqdm>=4.66",
+    "vectorbt>=0.26",
+    "SQLAlchemy>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "mypy>=1.0",
+]
+kronos = [
+    "torch>=2.0.0",
+    "einops==0.8.1",
+    "huggingface_hub>=0.33.1",
+    "safetensors>=0.6.2",
+]
+
+[project.scripts]
+atlas-terminal = "atlas_terminal.main:main"
+
+[project.urls]
+Homepage = "https://github.com/atlas-terminal/atlas-terminal"
+Documentation = "https://github.com/atlas-terminal/atlas-terminal#readme"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["atlas_terminal*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
